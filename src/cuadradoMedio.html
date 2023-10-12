@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación de Números Aleatorios</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+       
+
+            <div class="mt-5">
+                <label for="x0">Ingresa el valor inicial (x0):</label>
+                <input type="number" id="x0" class="form-control" placeholder="Valor de x0">
+            </div>
+
+            <button class="btn btn-success mt-3" id="agregarFila">Agregar Fila</button>
+            <button class="btn btn-danger mt-3" id="quitarFila">Quitar Fila</button>
+            <button class="btn btn-primary mt-3" id="calcular">Calcular</button>
+
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th>n</th>
+                        <th>R(n)</th>
+                        <th>R(n)^2</th>
+                        <th>M*R(n)^2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se agregarán aquí con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="cuadradoMedio.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
