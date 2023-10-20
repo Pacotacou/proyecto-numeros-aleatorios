@@ -10,15 +10,26 @@
 
 <div class="container">
     <div class="row">
-       
+        <div class="col-md-6 offset-md-3 text-center">
+            <h1 class="mt-5">Métodos de Generación de Números Aleatorios</h1>
+            <p class="lead mb-4">Selecciona un método:</p>
+            
+            <div class="btn-group" role="group" aria-label="Métodos">
+                <button type="button" class="btn btn-primary">Cuadrado Medio</button>
+                <button type="button" class="btn btn-primary">Método Lineal</button>
+                <button type="button" class="btn btn-primary">Método Aditivo</button>
+                <button type="button" class="btn btn-primary">Método Cuadrático</button>
+            </div>
 
             <div class="mt-5">
                 <label for="x0">Ingresa el valor inicial (x0):</label>
                 <input type="number" id="x0" class="form-control" placeholder="Valor de x0">
+                <label for="end">Ingrese el numero de iteraciones: </label>
+                <input type="number" id="end" class="form-control" placeholder="Número de iteraciones" min="2" max="100"/>
             </div>
-
+            <!--
             <button class="btn btn-success mt-3" id="agregarFila">Agregar Fila</button>
-            <button class="btn btn-danger mt-3" id="quitarFila">Quitar Fila</button>
+            <button class="btn btn-danger mt-3" id="quitarFila">Quitar Fila</button>-->
             <button class="btn btn-primary mt-3" id="calcular">Calcular</button>
 
             <table class="table table-bordered mt-4">
@@ -30,17 +41,19 @@
                         <th>M*R(n)^2</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="resultados">
                     <!-- Las filas se agregarán aquí con JavaScript -->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<script src="cuadradoMedio.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>
