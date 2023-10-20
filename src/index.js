@@ -19,6 +19,18 @@ function createWindow (){
       ipcMain.on('loadCuadradoMedio',event=>{
         win.loadFile("./src/cuadradoMedio.html");
       })
+
+      ipcMain.on('loadLineal', e =>{
+        win.loadFile("./src/lineal.html")
+      })
+
+      ipcMain.on('loadAditivo', e =>{
+        win.loadFile("./src/aditivo.html")
+      })
+
+      ipcMain.on('loadCuadratico',e =>{
+        win.loadFile('./src/cuadratico.html')
+      })
       
 }
 

@@ -17,55 +17,57 @@ function middleChars(str) {
 
 document.addEventListener('DOMContentLoaded',() => {
     const txtX0 = document.getElementById('x0');
+    const txtA = document.getElementById('a');
+    const txtC = document.getElementById('c');
+    const txtM = document.getElementById('m');
     const txtFinal = document.getElementById('end');
     const btnCalcular = document.getElementById('calcular');
     const tbResultados = document.getElementById('resultados');
 
-    const cuadradoMedio = (x0,max)=>{
-        tabla = []
+    const congLineal = () =>{
+        let x0 = parseInt(txtX0.value);
+        let a = parseInt(txtA.value);
+        let c = parseInt(txtC.value);
+        let m = parseInt(txtM.value);
+        let max = parseInt(txtFinal.value);
 
-        let Rn = x0;
-        let Rn2 = Rn**2;
-        let MRn2 = middleChars(Rn2.toString());
+        let table = []
 
-        tabla.push([0,Rn,Rn2,MRn2]);
+        let xn = x0;
+        let axnc = a * xn + c;
+        let axncmodm = axnc % m;
 
-        for (let index = 1; index <= max; index++) {
-            Rn = tabla[index-1][3];
-            Rn2 = Rn**2;
-            MRn2 = middleChars(Rn2.toString());
-            tabla.push([index,Rn,Rn2,MRn2])
-            if (MRn2 == 0){
-                break;
-            }
+        table.push([0,xn,axnc,axncmodm]);
+
+        for (let i = 1; i <= max; i++) {
+            xn = table[i-1][3];
+            axnc = a * xn + c;
+            axncmodm = axnc % m;
+            table.push([i,xn,axnc,axncmodm]);
         }
 
-        return tabla
-        
+        return table;
+
     }
 
     btnCalcular.addEventListener('click',(e)=>{
-
-        x0 = parseInt(txtX0.value);
-        max = parseInt(txtFinal.value);
-
-        let table = cuadradoMedio(x0,max);
-
+        let data = congLineal();
         tbResultados.innerHTML = '';
 
-        for (const row of table) {
+        for (const row of data) {
             let tr = document.createElement('tr');
             tr.innerHTML = 
-            `
+            `<tr>
                 <td>${row[0]}</td>
                 <td>${row[1]}</td>
                 <td>${row[2]}</td>
                 <td>${row[3]}</td>
-            `;
+            </tr>`
             tbResultados.appendChild(tr);
         }
 
     })
+
 
     document.getElementById('medio').addEventListener('click',(e)=>{
         ipcRenderer.send('loadCuadradoMedio');
@@ -79,6 +81,5 @@ document.addEventListener('DOMContentLoaded',() => {
     document.getElementById('Cuadratico').addEventListener('click',(e)=>{
         ipcRenderer.send('loadCuadratico');
     })
-
 
 });
