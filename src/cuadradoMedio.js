@@ -7,7 +7,7 @@ function middleChars(str) {
         if (str.length <= 3) {
             return parseInt(str);
           }
-          let start = Math.floor((str.length - 4) / 2);
+          let start = Math.ceil((str.length - 4) / 2);
           let length = str.length % 2 == 0 ? 4 : 3;
           return parseInt(str.substr(start, length));
     } catch (error) {
@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded',() => {
             Rn2 = Rn**2;
             MRn2 = middleChars(Rn2.toString());
             tabla.push([index,Rn,Rn2,MRn2])
+            if (MRn2 == 0){
+                break;
+            }
         }
 
         return tabla
