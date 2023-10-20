@@ -19,6 +19,7 @@ function createWindow (){
       ipcMain.on('loadCuadradoMedio',event=>{
         win.loadFile("./src/cuadradoMedio.html");
       })
+      
 }
 
 

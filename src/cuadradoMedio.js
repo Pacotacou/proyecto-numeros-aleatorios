@@ -1,4 +1,6 @@
 window.$ = window.jQuery = require('jquery');
+const { ipcRenderer } = require('electron');
+
 
 function middleChars(str) {
     try {
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded',() => {
     const txtX0 = document.getElementById('x0');
     const txtFinal = document.getElementById('end');
     const btnCalcular = document.getElementById('calcular');
+    const tbResultados = document.getElementById('resultados');
 
     const cuadradoMedio = (x0,max)=>{
         tabla = []
@@ -28,7 +31,7 @@ document.addEventListener('DOMContentLoaded',() => {
         tabla.push([0,Rn,Rn2,MRn2]);
 
         for (let index = 1; index <= max; index++) {
-            Rn = tabla[3];
+            Rn = tabla[index-1][3];
             Rn2 = Rn**2;
             MRn2 = middleChars(Rn2.toString());
             tabla.push([index,Rn,Rn2,MRn2])
@@ -38,6 +41,40 @@ document.addEventListener('DOMContentLoaded',() => {
         
     }
 
-    
+    btnCalcular.addEventListener('click',(e)=>{
+
+        x0 = parseInt(txtX0.value);
+        max = parseInt(txtFinal.value);
+
+        let table = cuadradoMedio(x0,max);
+
+        tbResultados.innerHTML = '';
+
+        for (const row of table) {
+            let tr = document.createElement('tr');
+            tr.innerHTML = 
+            `
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td>${row[2]}</td>
+                <td>${row[3]}</td>
+            `;
+            tbResultados.appendChild(tr);
+        }
+
+    })
+
+    document.getElementById('medio').addEventListener('click',(e)=>{
+        ipcRenderer.send('loadCuadradoMedio');
+    })
+    document.getElementById('lineal',(e)=>{
+        ipcRenderer.send('loadLineal');
+    })
+    document.getElementById('aditivo',(e)=>{
+        ipcRenderer.send('loadAditivo');
+    })
+    document.getElementById('cuadratico',(e)=>{
+        ipcRenderer.send('loadCuadratico');
+    })
 
 });
