@@ -46,23 +46,27 @@ document.addEventListener('DOMContentLoaded',() => {
 
     btnCalcular.addEventListener('click',(e)=>{
 
-        x0 = parseInt(txtX0.value);
-        max = parseInt(txtFinal.value);
-
-        let table = cuadradoMedio(x0,max);
-
-        tbResultados.innerHTML = '';
-
-        for (const row of table) {
-            let tr = document.createElement('tr');
-            tr.innerHTML = 
-            `
-                <td>${row[0]}</td>
-                <td>${row[1]}</td>
-                <td>${row[2]}</td>
-                <td>${row[3]}</td>
-            `;
-            tbResultados.appendChild(tr);
+        try {
+            x0 = parseInt(txtX0.value);
+            max = parseInt(txtFinal.value);
+    
+            let table = cuadradoMedio(x0,max);
+    
+            tbResultados.innerHTML = '';
+    
+            for (const row of table) {
+                let tr = document.createElement('tr');
+                tr.innerHTML = 
+                `
+                    <td>${row[0]}</td>
+                    <td>${row[1]}</td>
+                    <td>${row[2]}</td>
+                    <td>${row[3]}</td>
+                `;
+                tbResultados.appendChild(tr);
+            }
+        } catch (error) {
+            new Notification(error)
         }
 
     })

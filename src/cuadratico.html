@@ -6,21 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generación de Números Aleatorios</title>
     <link rel="stylesheet" href="../css/bootstrap.min (1).css">
-    <style>
-        .pad0{
-            padding: 0 !important;
-            margin:0;
-            width: 180px;
-        }
-        .but{
-            width: 100%;
-            height: 100%;
-        }
-        .pad0 input{
-            border: none;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
 
@@ -33,48 +18,34 @@
             <div class="btn-group" role="group" aria-label="Métodos">
                 <button type="button" class="btn btn-primary" id="medio">Cuadrado Medio</button>
                 <button type="button" class="btn btn-primary" id="lineal">Método Lineal</button>
-                <button type="button" class="btn btn-success" id="aditivo">Método Aditivo</button>
-                <button type="button" class="btn btn-primary" id="cuadratico">Método Cuadrático</button>
+                <button type="button" class="btn btn-primary" id="aditivo">Método Aditivo</button>
+                <button type="button" class="btn btn-success" id="cuadratico">Método Cuadrático</button>
             </div>
 
             <div class="mt-5">
                 <div class="form-group">
                     <label for="x0">Ingresa el valor inicial (x0):</label>
-                    
+                    <input type="number" id="x0" class="form-control" placeholder="Valor de x0">
                 </div>
-
-                <table class="table table-bordered">
-                    <thead>
-                        <th>n</th>
-                        <th>X(n)</th>
-                    </thead>
-                    <tbody>
-                        <tr class="xnrow">
-                            <td class="pad0">0</td>
-                            <td class="pad0">
-                                <input type="number" class="xn" id="x0" class="form-control" >
-                            </td>
-                        </tr>
-                        <tr >
-                            <td class="pad0"><button id="quitarFila" class=" but btn btn-primary" type="button">Quitar fila</button></td>
-                            <td class="pad0"><button id="agregarFila" type="button" class="but btn btn-success">Agregar fila</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <label for="m">Ingrese m: </label>
-                <input type="number" id="m" class="form-control" placeholder="valor de m"/>
-                <label for="end">Ingrese el numero de iteraciones: </label>
-                <input type="number" id="end" class="form-control" placeholder="Número de iteraciones" min="2" max="100"/>
+                <div class="form-group">
+                    <label for="m">Ingresa el valor de m:</label>
+                    <input type="number" id="m" class="form-control" placeholder="Valor de m">
+                </div>
                 
+                <div class="form-group">
+                    <label for="end">Ingrese el número de iteraciones:</label>
+                    <input type="number" id="end" class="form-control" placeholder="Número de iteraciones" min="2" max="100">
+                </div>
             </div>
             <button class="btn btn-primary mt-3" id="calcular">Calcular</button>
             <div class="table-responsive mt-3" style="max-height: 600px;">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>i</th>
-                            <th>Xi</th>
-                            <th>Aleatorio</th>
+                            <th>n</th>
+                            <th>X(n)</th>
+                            <th>X(n)*(X(n)+1)</th>
+                            <th>X(n)*(X(n)+1) mod m</th>
                         </tr>
                     </thead>
                     <tbody id="resultados">
@@ -87,7 +58,7 @@
 </div>
 
 <!-- Agrega tu lógica de JavaScript en un archivo separado (lineal.js) -->
-<script src="aditivo.js"></script>
+<script src="cuadratico.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
