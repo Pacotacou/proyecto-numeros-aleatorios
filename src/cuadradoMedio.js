@@ -1,7 +1,6 @@
 window.$ = window.jQuery = require('jquery');
 const { ipcRenderer } = require('electron');
 
-
 function middleChars(str) {
     try {
         if (str.length <= 3) {
