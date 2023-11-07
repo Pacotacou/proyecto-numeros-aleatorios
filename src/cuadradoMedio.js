@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded',() => {
     document.getElementById('aditivo').addEventListener('click',(e)=>{
         ipcRenderer.send('loadAditivo');
     })
-    document.getElementById('Cuadratico').addEventListener('click',(e)=>{
+    document.getElementById('cuadratico').addEventListener('click',(e)=>{
         ipcRenderer.send('loadCuadratico');
     })
 
